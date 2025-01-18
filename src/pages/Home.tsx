@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import { useAuthStore } from "../stores/authStore";
 // import TodoTest from "../components/todo/TodoTest";
 
 const Home = () => {
   // 나중에 로그인 상태 확인을 위해 필요
-  // const { token } = useAuthStore();
+  const { token, user, logout } = useAuthStore();
 
   return (
     <div>
@@ -12,14 +13,37 @@ const Home = () => {
         <h1 className="text-4xl font-bold text-gray-900">북마크 관리 서비스</h1>
       </div>
       <div className="flex justify-end items-center">
-        <div className="flex gap-4">
-          <Link to="/signin" className="border-2 border-black px-2 rounded-sm">
-            로그인
-          </Link>
-          <Link to="/signup" className="border-2 border-black px-2 rounded-sm">
-            회원가입
-          </Link>
-        </div>
+        {!token ? (
+          <div className="flex gap-4">
+            <Link
+              to="/signin"
+              className="border-2 border-black px-2 rounded-sm"
+            >
+              로그인
+            </Link>
+            <Link
+              to="/signup"
+              className="border-2 border-black px-2 rounded-sm"
+            >
+              회원가입
+            </Link>
+          </div>
+        ) : (
+          <div className="flex gap-4">
+            <Link
+              to="/mypage"
+              className="border-2 border-black px-2 rounded-sm"
+            >
+              마이페이지
+            </Link>
+            <button
+              onClick={logout}
+              className="border-2 border-black px-2 rounded-sm"
+            >
+              로그아웃
+            </button>
+          </div>
+        )}
       </div>
 
       {/* 서비스 소개 섹션 */}

@@ -5,6 +5,18 @@
       "password": "password123!",
       "nickname": "테스트유저",
       "avatar": null
+    },
+    {
+      "id": "jimin",
+      "password": "@jimin123",
+      "nickname": "지공",
+      "avatar": null
+    },
+    {
+      "id": "choi",
+      "password": "@choi123",
+      "nickname": "최쥐민",
+      "avatar": null
     }
   ]
 }

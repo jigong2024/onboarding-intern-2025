@@ -5,7 +5,12 @@ export const jasonPlaceholderInstance = axios.create({
   timeout: 5000,
 });
 
+// 메니풀 서버
+// export const authInstance = axios.create({
+//   baseURL: "https://moneyfulpublicpolicy.co.kr",
+//   timeout: 5000,
+// });
+
 export const authInstance = axios.create({
-  baseURL: "https://moneyfulpublicpolicy.co.kr",
-  timeout: 5000,
+  baseURL: "http://localhost:4000",
 });

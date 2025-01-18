@@ -64,6 +64,7 @@ const SignUp = () => {
 
     try {
       await authApi.register(formData);
+      alert("회원가입에 성공했습니다. 로그인 페이지로 이동합니다!");
       navigate("/signin");
     } catch (error) {
       console.error(error);
