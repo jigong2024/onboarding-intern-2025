@@ -36,7 +36,7 @@ export interface UserResponse {
   success: true;
 }
 
-export interface UpdateProfileResponse extends AuthResponse {
+export interface UpdateProfileResponse extends RegisterResponse {
   avatar: string;
   nickname: string;
 }

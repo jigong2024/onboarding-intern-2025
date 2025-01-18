@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { todosApi } from "../../api/axios";
+import { todosApi } from "../../api/todos";
 
 const TodoTest = () => {
   const [selectedId, setSelectedId] = useState<number>(1);
