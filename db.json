@@ -17,6 +17,12 @@
       "password": "@choi123",
       "nickname": "최쥐민",
       "avatar": null
+    },
+    {
+      "id": "jigong",
+      "password": "@jigong123",
+      "nickname": "지밍",
+      "avatar": "blob:http://localhost:3000/1235b035-7580-4b84-846f-44d7b32dd9be"
     }
   ]
 }
