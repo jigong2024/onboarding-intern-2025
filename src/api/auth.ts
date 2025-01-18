@@ -1,14 +1,3 @@
-// import {
-//   LoginRequest,
-//   LoginResponse,
-//   RegisterRequest,
-//   RegisterResponse,
-//   UpdateProfileRequest,
-//   UpdateProfileResponse,
-//   UserResponse,
-// } from "../types/auth";
-// import { authInstance } from "./axios";
-
 import {
   LoginRequest,
   LoginResponse,
