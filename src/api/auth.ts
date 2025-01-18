@@ -9,7 +9,15 @@
 // } from "../types/auth";
 // import { authInstance } from "./axios";
 
-import { LoginRequest, RegisterRequest } from "../types/auth";
+import {
+  LoginRequest,
+  LoginResponse,
+  RegisterRequest,
+  RegisterResponse,
+  UpdateProfileRequest,
+  UpdateProfileResponse,
+  UserResponse,
+} from "../types/auth";
 import { authInstance } from "./axios";
 
 // export const authApi = {
@@ -49,7 +57,7 @@ import { authInstance } from "./axios";
 
 export const authApi = {
   // 회원가입
-  register: async (data: RegisterRequest) => {
+  register: async (data: RegisterRequest): Promise<RegisterResponse> => {
     const checkUser = await authInstance.get(`/users?id=${data.id}`);
     if (checkUser.data.length > 0) {
       throw new Error("이미 존재하는 아이디입니다.");
@@ -64,15 +72,13 @@ export const authApi = {
     });
 
     return {
-      data: {
-        message: "회원가입 완료",
-        success: true,
-      },
+      message: "회원가입 완료",
+      success: true,
     };
   },
 
   // 로그인
-  login: async (data: LoginRequest) => {
+  login: async (data: LoginRequest): Promise<LoginResponse> => {
     const response = await authInstance.get(`/users?id=${data.id}`);
     const user = response.data[0];
 
@@ -92,13 +98,70 @@ export const authApi = {
     );
 
     return {
-      data: {
-        accessToken: token,
-        userId: user.id,
-        nickname: user.nickname,
-        avatar: user.avatar,
-        success: true,
-      },
+      accessToken: token,
+      userId: user.id,
+      nickname: user.nickname,
+      avatar: user.avatar,
+      success: true,
+    };
+  },
+
+  // 회원정보 조회
+  getProfile: async (token: string): Promise<UserResponse> => {
+    const tokenData = JSON.parse(atob(token));
+
+    const response = await authInstance.get(`/users?id=${tokenData.id}`);
+    const user = response.data[0];
+
+    if (!user) {
+      throw new Error("User information not found");
+    }
+
+    return {
+      id: user.id,
+      nickname: user.nickname,
+      avatar: user.avatar,
+      success: true,
+    };
+  },
+
+  // 프로필 업데이트
+  updateProfile: async (
+    token: string,
+    data: UpdateProfileRequest
+  ): Promise<UpdateProfileResponse> => {
+    const tokenData = JSON.parse(atob(token));
+
+    const userResponse = await authInstance.get(`/users?id=${tokenData.id}`);
+    const existingUser = userResponse.data[0];
+
+    if (!existingUser) {
+      throw new Error("User information not found");
+    }
+
+    let avatarUrl = existingUser.avatar;
+    if (data.avatar) {
+      // 실제 파일 업로드는 JSON 서버에서 복잡하므로 임시 처리
+      avatarUrl = URL.createObjectURL(data.avatar);
+    }
+
+    // 프로필 업데이트
+    const updatedUser = {
+      ...existingUser,
+      nickname: data.nickname || existingUser.nickname,
+      avatar: avatarUrl,
+    };
+
+    const updateResponse = await authInstance.put(
+      `/users/${existingUser.id}`,
+      updatedUser
+    );
+
+    return {
+      message: "프로필 업데이트 완료",
+      success: true,
+      nickname: updateResponse.data.nickname,
+      avatar: updateResponse.data.avatar,
     };
   },
 };

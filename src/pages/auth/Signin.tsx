@@ -21,11 +21,11 @@ const SignIn = () => {
     setIsLoading(true);
 
     try {
-      const { data } = await authApi.login(formData);
-      setAuth(data.accessToken, {
-        id: data.userId,
-        nickname: data.nickname,
-        avatar: data.avatar,
+      const response = await authApi.login(formData);
+      setAuth(response.accessToken, {
+        id: response.userId,
+        nickname: response.nickname,
+        avatar: response.avatar,
       });
       navigate("/");
     } catch (error: unknown) {
