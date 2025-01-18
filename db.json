@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "id": "test123",
+      "password": "password123!",
+      "nickname": "테스트유저",
+      "avatar": null
+    }
+  ]
+}
