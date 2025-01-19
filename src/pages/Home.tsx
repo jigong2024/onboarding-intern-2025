@@ -45,7 +45,6 @@ const Home = () => {
           </div>
         )}
       </div>
-
       {/* 서비스 소개 섹션 */}
       <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         <div className="bg-white p-6 rounded-lg shadow">
@@ -67,7 +66,13 @@ const Home = () => {
           </p>
         </div>
       </div>
-
+      <button
+        onClick={() => {
+          throw new Error("This is your first error!");
+        }}
+      >
+        Break the world
+      </button>
       {/* <TodoTest /> */}
     </div>
   );
