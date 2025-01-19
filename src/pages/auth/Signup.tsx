@@ -80,7 +80,7 @@ const SignUp = () => {
       navigate("/signin");
     } catch (error) {
       console.error(error);
-      alert("회원가입에 실패했습니다.");
+      alert("이미 존재하는 아이디 입니다.");
     } finally {
       setIsLoading(false);
     }
