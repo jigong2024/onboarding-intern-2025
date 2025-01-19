@@ -6,6 +6,11 @@ const Home = () => {
   // 나중에 로그인 상태 확인을 위해 필요
   const { token, logout } = useAuthStore();
 
+  const handleLogout = () => {
+    alert("로그아웃 되었습니다.");
+    logout();
+  };
+
   return (
     <div>
       {/* 헤더 */}
@@ -37,7 +42,7 @@ const Home = () => {
               마이페이지
             </Link>
             <button
-              onClick={logout}
+              onClick={handleLogout}
               className="border-2 border-black px-2 rounded-sm"
             >
               로그아웃

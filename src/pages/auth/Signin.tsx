@@ -13,10 +13,7 @@ const SignIn = () => {
   // 토큰 존재 시 홈 페이지로 리다이렉트
   useEffect(() => {
     if (token) {
-      setTimeout(() => {
-        alert("이미 로그인된 상태입니다.");
-        navigate("/");
-      }, 0);
+      navigate("/");
     }
   }, [token, navigate]);
 

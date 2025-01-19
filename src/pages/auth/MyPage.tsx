@@ -18,10 +18,7 @@ const MyPage = () => {
   // 로그인 상태 확인 및 프로필 정보 가져오기
   useEffect(() => {
     // 토큰이 없으면 로그인 페이지로 리다이렉트
-    if (!token) {
-      navigate("/signin");
-      return;
-    }
+    if (!token) return;
 
     const fetchProfile = async () => {
       try {
@@ -103,6 +100,7 @@ const MyPage = () => {
 
   // 로그아웃 핸들러
   const handleLogout = () => {
+    alert("로그아웃 되었습니다.");
     logout();
     navigate("/");
   };
