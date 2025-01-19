@@ -86,6 +86,7 @@ const SignUp = () => {
       <div className="border-2 rounded-sm w-[400px] h-[300px]">
         <form
           onSubmit={handleSubmit}
+          role="form"
           className="w-full h-full flex flex-col justify-center items-center gap-4"
         >
           {/* 아이디 필드 */}
