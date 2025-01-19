@@ -4,7 +4,7 @@ import { useAuthStore } from "../stores/authStore";
 
 const Home = () => {
   // 나중에 로그인 상태 확인을 위해 필요
-  const { token, user, logout } = useAuthStore();
+  const { token, logout } = useAuthStore();
 
   return (
     <div>
@@ -66,13 +66,13 @@ const Home = () => {
           </p>
         </div>
       </div>
-      <button
+      {/* <button
         onClick={() => {
           throw new Error("This is your first error!");
         }}
       >
         Break the world
-      </button>
+      </button> */}
       {/* <TodoTest /> */}
     </div>
   );

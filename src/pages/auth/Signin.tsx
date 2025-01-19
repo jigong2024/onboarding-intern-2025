@@ -1,13 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../stores/authStore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { authApi } from "../../api/auth";
+import * as Sentry from "@sentry/react";
 // import { ArrowLeft } from "lucide-react";
 // import { AxiosError } from "axios";
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const { setAuth } = useAuthStore();
+  const { token, setAuth } = useAuthStore();
+
+  // 토큰 존재 시 홈 페이지로 리다이렉트
+  useEffect(() => {
+    if (token) {
+      setTimeout(() => {
+        alert("이미 로그인된 상태입니다.");
+        navigate("/");
+      }, 0);
+    }
+  }, [token, navigate]);
 
   const [formData, setFormData] = useState({
     id: "",
@@ -47,6 +58,10 @@ const SignIn = () => {
       //     alert("로그인 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
       //   }
       // }
+
+      // Sentry에 에러 보고
+      Sentry.captureException(error);
+
       if (error instanceof Error) {
         // 에러 메시지에 따라 다른 처리
         switch (error.message) {

@@ -13,4 +13,5 @@ export const jasonPlaceholderInstance = axios.create({
 
 export const authInstance = axios.create({
   baseURL: "http://localhost:4000",
+  timeout: 5000,
 });
