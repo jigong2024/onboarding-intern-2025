@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": "test123",
+      "password": "password123!",
+      "nickname": "테스트유저",
+      "avatar": null
+    },
+    {
+      "id": "jimin",
+      "password": "@jimin123",
+      "nickname": "지공이",
+      "avatar": "blob:http://localhost:3000/181aadd0-7282-4fab-aaf3-368b6daec45d"
+    },
+    {
+      "id": "choi",
+      "password": "@choi123",
+      "nickname": "최쥐민",
+      "avatar": null
+    },
+    {
+      "id": "jigong",
+      "password": "@jigong123",
+      "nickname": "지밍이",
+      "avatar": "blob:http://localhost:3000/74a98cdf-2449-47d6-ae44-f619fcdb0399"
+    },
+    {
+      "id": "jijiji",
+      "password": "@jijiji123",
+      "nickname": "지지배",
+      "avatar": "blob:http://localhost:3000/7f7a6d7d-0a66-4ed7-a77d-13d3671673fd"
+    }
+  ]
+}
