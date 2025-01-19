@@ -1,10 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import { authApi } from "../../api/auth";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuthStore } from "../../stores/authStore";
 // import { ArrowLeft } from "lucide-react";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const { token } = useAuthStore();
+
+  // 토큰 존재 시 홈 페이지로 리다이렉트
+  useEffect(() => {
+    if (token) {
+      setTimeout(() => {
+        alert("이미 로그인된 상태입니다.");
+        navigate("/");
+      }, 0);
+    }
+  }, [token, navigate]);
 
   const [formData, setFormData] = useState({
     id: "",

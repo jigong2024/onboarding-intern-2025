@@ -15,14 +15,16 @@ const MyPage = () => {
   );
   const [isLoading, setIsLoading] = useState(true);
 
+  // 로그인 상태 확인 및 프로필 정보 가져오기
   useEffect(() => {
+    // 토큰이 없으면 로그인 페이지로 리다이렉트
+    if (!token) {
+      navigate("/signin");
+      return;
+    }
+
     const fetchProfile = async () => {
       try {
-        if (!token) {
-          navigate("/signin");
-          return;
-        }
-
         const profileData = await authApi.getProfile(token);
 
         setNickname(profileData.nickname);
@@ -105,13 +107,6 @@ const MyPage = () => {
     navigate("/");
   };
 
-  // 로그인 상태 확인
-  if (!user) {
-    alert("로그인이 필요합니다.");
-    navigate("/signin");
-    return null;
-  }
-
   // 로딩 상태
   if (isLoading) {
     return <div>로딩 중...</div>;
@@ -167,7 +162,7 @@ const MyPage = () => {
                 <label className="block">아이디</label>
                 <input
                   type="text"
-                  value={user.id}
+                  value={user?.id}
                   disabled
                   className="border px-1"
                 />
