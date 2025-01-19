@@ -2,10 +2,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import SignIn from "./pages/auth/Signin";
-import SignUp from "./pages/auth/Signup";
 import MyPage from "./pages/auth/MyPage";
 import Home from "./pages/Home";
+import SignIn from "./pages/auth/SignIn";
+import SignUp from "./pages/auth/SignUp";
 
 const queryClient = new QueryClient();
 

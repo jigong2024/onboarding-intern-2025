@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../stores/authStore";
 import { useState } from "react";
 import { authApi } from "../../api/auth";
-import { ArrowLeft } from "lucide-react";
+// import { ArrowLeft } from "lucide-react";
 // import { AxiosError } from "axios";
 
 const SignIn = () => {
@@ -71,7 +71,8 @@ const SignIn = () => {
     <div className="w-full h-screen flex flex-col justify-center items-center">
       <div className="flex justify-end w-[400px] mb-1">
         <button className="hover:bg-gray-100" onClick={() => navigate(-1)}>
-          <ArrowLeft size={24} />
+          {/* <ArrowLeft size={24} /> */}
+          ◀️
         </button>
       </div>
 
